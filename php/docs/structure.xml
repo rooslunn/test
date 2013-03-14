@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a12" title="">
+  <file path="Controller.php" hash="d12873949a437c872d0227720880ee6f" package="Default">
+    <class final="false" abstract="false" namespace="global" line="10" package="Default">
+      <extends/>
+      <name>Controller</name>
+      <full_name>\Controller</full_name>
+      <docblock line="3">
+        <description>Main controller class</description>
+        <long-description></long-description>
+        <tag line="3" name="author" description="Ruslan Kladko &lt;rkladko@gmail.com&gt;"/>
+        <tag line="3" name="version" description="0.1"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="15" namespace="global" package="Default">
+        <name>$_provider</name>
+        <default></default>
+        <docblock line="12">
+          <description></description>
+          <long-description></long-description>
+          <tag line="12" name="var" description="instance of IDataprovider" type="\IDataProvider">
+            <type by_reference="false">\IDataProvider</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="20" namespace="global" package="Default">
+        <name>$_store</name>
+        <default></default>
+        <docblock line="17">
+          <description></description>
+          <long-description></long-description>
+          <tag line="17" name="var" description="instance of IDataStore" type="\IDataStore">
+            <type by_reference="false">\IDataStore</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="25" namespace="global" package="Default">
+        <name>$_presenter</name>
+        <default></default>
+        <docblock line="22">
+          <description></description>
+          <long-description></long-description>
+          <tag line="22" name="var" description="instance of IDataPresenter" type="\IDataPresenter">
+            <type by_reference="false">\IDataPresenter</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="34" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="27">
+          <description>Creates instance of controller.</description>
+          <long-description>&lt;p&gt;Sets local vars.&lt;/p&gt;</long-description>
+          <tag line="27" name="param" description="instance of news provider" type="\IDataProvider" variable="$provider">
+            <type by_reference="false">\IDataProvider</type>
+          </tag>
+          <tag line="27" name="param" description="instance of DB where to save search results" type="\IDataStore" variable="$store">
+            <type by_reference="false">\IDataStore</type>
+          </tag>
+          <tag line="27" name="param" description="instance of news converter for presenting to client (browser)" type="\IDataPresenter" variable="$presenter">
+            <type by_reference="false">\IDataPresenter</type>
+          </tag>
+        </docblock>
+        <argument line="34">
+          <name>$provider</name>
+          <default></default>
+          <type>\IDataProvider</type>
+        </argument>
+        <argument line="34">
+          <name>$store</name>
+          <default></default>
+          <type>\IDataStore</type>
+        </argument>
+        <argument line="34">
+          <name>$presenter</name>
+          <default></default>
+          <type>\IDataPresenter</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="45" package="Default">
+        <name>search_news_for</name>
+        <full_name>search_news_for</full_name>
+        <docblock line="40">
+          <description>Searches for query in news</description>
+          <long-description></long-description>
+          <tag line="40" name="param" description="" type="string" variable="$query">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="40" name="return" description="result in json-encoded string" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="45">
+          <name>$query</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Controller.php</error>
+    </parse_markers>
+  </file>
+  <file path="DataPresenter.php" hash="c9823207d44ea792242bbb82c3a09738" package="Default">
+    <interface namespace="global" line="3" package="Default">
+      <name>IDataPresenter</name>
+      <full_name>\IDataPresenter</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="4" package="Default">
+        <name>to_json</name>
+        <full_name>to_json</full_name>
+        <argument line="4">
+          <name>$items</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </interface>
+    <class final="false" abstract="false" namespace="global" line="7" package="Default">
+      <extends/>
+      <implements>\IDataPresenter</implements>
+      <name>DataPresenter</name>
+      <full_name>\DataPresenter</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="8" package="Default">
+        <name>to_json</name>
+        <full_name>to_json</full_name>
+        <argument line="8">
+          <name>$items</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file DataPresenter.php</error>
+      <error line="4" code="50010">No DocBlock was found for method to_json()</error>
+      <error line="7" code="50000">No DocBlock was found for \DataPresenter</error>
+      <error line="8" code="50010">No DocBlock was found for method to_json()</error>
+    </parse_markers>
+  </file>
+  <file path="DataProvider.php" hash="93f65e06b85e1333e8947b7f33598615" package="Default">
+    <interface namespace="global" line="6" package="Default">
+      <name>IDataProvider</name>
+      <full_name>\IDataProvider</full_name>
+      <docblock line="3">
+        <description>Interface for news provider</description>
+        <long-description></long-description>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="12" package="Default">
+        <name>search_for</name>
+        <full_name>search_for</full_name>
+        <docblock line="7">
+          <description>Searches for pattern in news provider</description>
+          <long-description></long-description>
+          <tag line="7" name="param" description="pattern to search for" type="string" variable="$query">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="7" name="return" description="xml objects matching pattern in title or description" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="12">
+          <name>$query</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </interface>
+    <class final="false" abstract="false" namespace="global" line="18" package="Default">
+      <extends/>
+      <implements>\IDataProvider</implements>
+      <name>RSSDataProvider</name>
+      <full_name>\RSSDataProvider</full_name>
+      <docblock line="15">
+        <description>Implements news provider</description>
+        <long-description></long-description>
+      </docblock>
+      <constant namespace="global" line="20" package="Default">
+        <name>FEED_URL</name>
+        <full_name>FEED_URL</full_name>
+        <value>'http://news.google.com/news?cf=all&amp;ned=ru_ru&amp;hl=ru&amp;topic=b&amp;output=rss'</value>
+      </constant>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="22" package="Default">
+        <name>_get_feed_xml</name>
+        <full_name>_get_feed_xml</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="36" package="Default">
+        <name>search_for</name>
+        <full_name>search_for</full_name>
+        <argument line="36">
+          <name>$query</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file DataProvider.php</error>
+      <error line="22" code="50010">No DocBlock was found for method _get_feed_xml()</error>
+      <error line="36" code="50010">No DocBlock was found for method search_for()</error>
+    </parse_markers>
+  </file>
+  <file path="DataStore.php" hash="cf40eb09ebb2922ecf7f512ca2d9ab45" package="Default">
+    <interface namespace="global" line="3" package="Default">
+      <name>IDataStore</name>
+      <full_name>\IDataStore</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="4" package="Default">
+        <name>save</name>
+        <full_name>save</full_name>
+        <argument line="4">
+          <name>$items</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </interface>
+    <class final="false" abstract="false" namespace="global" line="7" package="Default">
+      <extends/>
+      <implements>\IDataStore</implements>
+      <name>MySQLDataStore</name>
+      <full_name>\MySQLDataStore</full_name>
+      <property final="false" static="false" visibility="private" line="9" namespace="global" package="Default">
+        <name>$_config</name>
+        <default>array('host' =&gt; '127.0.0.1', 'db' =&gt; 'aaa_test', 'user' =&gt; 'root', 'pswd' =&gt; '')</default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="16" package="Default">
+        <name>save</name>
+        <full_name>save</full_name>
+        <argument line="16">
+          <name>$items</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file DataStore.php</error>
+      <error line="4" code="50010">No DocBlock was found for method save()</error>
+      <error line="7" code="50000">No DocBlock was found for \MySQLDataStore</error>
+      <error line="9" code="50018">No DocBlock was found for property $_config</error>
+      <error line="16" code="50010">No DocBlock was found for method save()</error>
+    </parse_markers>
+  </file>
+  <file path="get.php" hash="8ec2ac2d154b88a141c3de9cfb1bfdf8" package="Default">
+    <include line="3" type="Require Once" package="Default">
+      <name>DataProvider.php</name>
+    </include>
+    <include line="4" type="Require Once" package="Default">
+      <name>DataStore.php</name>
+    </include>
+    <include line="5" type="Require Once" package="Default">
+      <name>DataPresenter.php</name>
+    </include>
+    <include line="6" type="Require Once" package="Default">
+      <name>Controller.php</name>
+    </include>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file get.php</error>
+    </parse_markers>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <namespace name="global" full_name="global"/>
+  <marker count="0">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>
